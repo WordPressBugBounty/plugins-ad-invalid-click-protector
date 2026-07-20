@@ -6,10 +6,11 @@ Donate link: https://paypal.me/acnamhq
 Tags: adsense, invalid, click, isaumya, aicp
 Requires at least: 4.9
 Requires PHP: 7.4
-Tested up to: 6.5
-Stable Tag: 1.3.0
+Tested up to: 7.0.2
+Stable Tag: 1.3.2
 
-License: GNU Version 2 or Any Later Version
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 One plugin to save your AdSense account from Click Bombings and Invalid Click Activities
 
@@ -224,6 +225,18 @@ No, you are not supposed to click on your own ads. If you want you can use adblo
 This plugin doesn't work on mobile devices such as smartphones and tablets, because this hardware uses a touchscreen instead of a mouse as click input. This design makes the boundary monitoring trick ineffective.
 
 == Changelog ==
+
+= 1.3.2, July 21, 2026 =
+* Fixed the readme.txt License field so it uses a WordPress.org-recognized license string, resolving the "The License field could not be validated" warning shown after the 1.3.1 SVN import.
+
+= 1.3.1, July 21, 2026 =
+* Fixed a security issue where the click-tracking AJAX endpoint trusted a client-supplied IP address instead of deriving it server-side, which could let an attacker poison the blocked-IP list with arbitrary victim IPs and suppress ads for them.
+* Hardened server-side visitor IP detection so that, on sites running behind a reverse proxy or load balancer, a spoofed forwarding header can no longer override the real client IP.
+* The click-tracking endpoint now also enforces the configured click limit server-side instead of trusting the client-reported click count.
+* Fixed a reflected XSS issue on the Banned User Details admin page.
+* Restricted the donation notice dismissal endpoint, and the notice itself, to logged-in administrators only.
+* Fixed bulk delete not working correctly on the Banned User Details admin page.
+* Fixed the Banned User Details search box silently ignoring a search for "0".
 
 = 1.3.0, July 2, 2024 =
 * Pushing update that holds proper code without any garbage code added by the hacker who hacked my account to push malware via this plugin.
